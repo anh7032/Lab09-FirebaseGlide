@@ -14,3 +14,6 @@ app/google-services.json
 
 # Agent spec, not part of the submission
 AGENTS.md
+
+# Build output logs
+build_log.txt
