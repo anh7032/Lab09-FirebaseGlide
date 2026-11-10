@@ -34,8 +34,12 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setTitle(R.string.title_gallery)
 
+        binding.tvWelcome.text = getString(R.string.welcome_user, auth.currentUser?.email.orEmpty())
+
         binding.recyclerPhotos.layoutManager = LinearLayoutManager(this)
         binding.recyclerPhotos.adapter = PhotoAdapter(PhotoItem.samplePhotos)
+        // The list size never changes, so skip the extra layout passes.
+        binding.recyclerPhotos.setHasFixedSize(true)
 
         loadAvatar()
     }

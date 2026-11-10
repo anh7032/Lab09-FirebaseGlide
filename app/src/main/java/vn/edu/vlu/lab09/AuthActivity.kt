@@ -51,6 +51,8 @@ class AuthActivity : AppCompatActivity() {
     /** Keeps confirm-password visibility and the submit label in sync with the selected mode. */
     private fun applyMode() {
         binding.tilConfirmPassword.visibility = if (isRegisterMode) View.VISIBLE else View.GONE
+        // Resetting a password only makes sense when signing in.
+        binding.tvForgotPassword.visibility = if (isRegisterMode) View.GONE else View.VISIBLE
         binding.btnSubmit.setText(if (isRegisterMode) R.string.btn_register else R.string.btn_login)
 
         if (!isRegisterMode) {

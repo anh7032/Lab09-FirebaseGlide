@@ -27,6 +27,21 @@
             app:srcCompat="@drawable/ic_placeholder" />
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <!-- Welcome line: email of the signed-in user -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="15sp"
+        tools:text="Hello, test@gmail.com" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPhotos"
         android:layout_width="match_parent"

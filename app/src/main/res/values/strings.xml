@@ -30,5 +30,6 @@
     <string name="action_logout">Logout</string>
     <string name="cd_photo">Photo</string>
     <string name="cd_avatar">User avatar</string>
+    <string name="welcome_user">Hello, %1$s</string>
     <string name="photo_by">by %1$s</string>
 </resources>
