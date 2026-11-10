@@ -42,6 +42,7 @@ class AuthActivity : AppCompatActivity() {
         }
 
         binding.btnSubmit.setOnClickListener { submit() }
+        binding.tvForgotPassword.setOnClickListener { sendPasswordResetEmail() }
 
         applyMode()
     }
@@ -84,6 +85,29 @@ class AuthActivity : AppCompatActivity() {
             setLoading(false)
             handleAuthError(exception)
         }
+    }
+
+    /** Bonus: send a reset link for the email currently typed in the form. */
+    private fun sendPasswordResetEmail() {
+        val email = binding.etEmail.text?.toString()?.trim().orEmpty()
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.tilEmail.error = getString(R.string.error_invalid_email)
+            return
+        }
+
+        binding.tilEmail.error = null
+        setLoading(true)
+
+        auth.sendPasswordResetEmail(email)
+            .addOnSuccessListener {
+                setLoading(false)
+                Toast.makeText(this, getString(R.string.msg_reset_sent, email), Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener { exception ->
+                setLoading(false)
+                handleAuthError(exception)
+            }
     }
 
     private fun validateInput(email: String, password: String, confirmPassword: String): Boolean {
