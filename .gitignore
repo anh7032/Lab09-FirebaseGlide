@@ -11,3 +11,6 @@ local.properties
 
 # Firebase config - do not publish API keys publicly
 app/google-services.json
+
+# Agent spec, not part of the submission
+AGENTS.md

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import vn.edu.vlu.lab09.databinding.ActivityAuthBinding
@@ -148,6 +149,10 @@ class AuthActivity : AppCompatActivity() {
 
             is FirebaseAuthInvalidCredentialsException ->
                 binding.tilPassword.error = getString(R.string.error_invalid_credentials)
+
+            // No account for this email, or the account was disabled/deleted.
+            is FirebaseAuthInvalidUserException ->
+                binding.tilEmail.error = getString(R.string.error_invalid_credentials)
 
             is FirebaseNetworkException ->
                 Toast.makeText(this, R.string.error_network, Toast.LENGTH_LONG).show()
